@@ -15,9 +15,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('conversation_id')->constrained()->onDelete('cascade');
             $table->foreignId('sender_id')->constrained('users')->onDelete('cascade');
-            $table->text('message');
+            $table->enum('sender_type', ['normal_user', 'trader'])->nullable();
+            $table->text('message')->nullable();
+            $table->boolean('is_read')->default(false)->nullable();
+            $table->boolean('is_reported')->default(false)->nullable();
             $table->timestamp('read_at')->nullable();
-            $table->timestamps();
+
+            $table->index(['sender_id', 'sender_type']);
         });
     }
 

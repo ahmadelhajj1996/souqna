@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->enum('condition', ['new', 'used']);
             $table->decimal('price', 12, 2);
-            $table->foreignId('city_id')->constrained()->onDelete('cascade');
+            //$table->foreignId('city_id')->constrained()->onDelete('cascade');
             $table->enum('status', ['pending', 'active', 'rejected', 'sold'])->default('pending');
             $table->integer('views')->default(0);
             $table->boolean('featured')->default(false);

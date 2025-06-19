@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('ad_package_id')->constrained()->onDelete('cascade');
             $table->timestamp('activated_at');
-            $table->timestamp('expires_at');
+            $table->date('expires_at');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
